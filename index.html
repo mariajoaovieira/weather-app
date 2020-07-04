@@ -3,17 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/27a687ec43.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
+
   <body>
-    <h1>
-      Hello GIT
-    </h1>
-    <form>
-      <input type="text" placeholder="Enter your email" />
-      <input type="submit" value="Login" />
-    </form>
-    <script src="script.js"></script>
+    <br /><br />
+    <div class="container">
+      <div class="weather-app">
+        <form>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter a city here..."
+              aria-label="Recipient's username with two button addons"
+              aria-describedby="button-addon4"
+              id="city-input"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="search-button"
+              >
+                Search
+              </button>
+              <button class="btn btn-outline-secondary" type="button">
+                Current
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="container-header">
+          <div class="row">
+            <div class="col-md-3">
+              <h1 id="city">Albufeira</h1>
+              <br />
+              <h2 id="weekDay">Monday</h2>
+              <h2 id="fullDate">01/06, 00:00</h2>
+            </div>
+            <div class="col-md-2">
+              <div class="image">
+                <img
+                  src="https://image.flaticon.com/icons/svg/3026/3026455.svg"
+                />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <br />
+              <h3>
+                <span class="temperature" id="temperature">19</span>
+                <a href="#" id="celsius-link">ºC</a> |
+                <a href="#" id="fahrenheit-link">ºF</a>
+              </h3>
+              <br />
+              <h3 class="weather-type">Mostly Cloudy</h3>
+            </div>
+            <div class="col-md-3">
+              <br />
+              <h3 class="details"><strong>Sunrise: </strong>6:14 am</h3>
+              <h3 class="details"><strong>Sunset: </strong>8:47 pm</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h3>TUE</h3>
+            <h4>02/06</h4>
+            <img src="https://image.flaticon.com/icons/svg/3026/3026455.svg" />
+            <p><strong>23°</strong> / 16°</p>
+          </div>
+          <div class="col-sm-2">
+            <h3>WED</h3>
+            <h4>03/06</h4>
+            <img src="https://image.flaticon.com/icons/svg/3026/3026415.svg" />
+            <p><strong>23°</strong> / 18°</p>
+          </div>
+          <div class="col-sm-2">
+            <h3>TUR</h3>
+            <h4>04/06</h4>
+            <img src="https://image.flaticon.com/icons/svg/3026/3026273.svg" />
+            <p><strong>24°</strong> / 16°</p>
+          </div>
+          <div class="col-sm-2">
+            <h3>FRI</h3>
+            <h4>05/06</h4>
+            <img src="https://image.flaticon.com/icons/svg/3026/3026273.svg" />
+            <p><strong>23°</strong> / 16°</p>
+          </div>
+          <div class="col-sm-2">
+            <h3>SAT</h3>
+            <h4>06/06</h4>
+            <img src="https://image.flaticon.com/icons/svg/3026/3026273.svg" />
+            <p><strong>23°</strong> / 16°</p>
+          </div>
+          <div class="col-sm-2">
+            <h3>SUN</h3>
+            <h4>07/06</h4>
+            <img src="https://image.flaticon.com/icons/svg/3026/3026455.svg" />
+            <p><strong>23°</strong> / 16°</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
   </body>
 </html>
