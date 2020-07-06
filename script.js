@@ -1,3 +1,5 @@
+// give the current date
+
 let now = new Date();
 console.log(now.getDay());
 console.log(now.getDate());
@@ -37,6 +39,8 @@ let WeekDay = document.querySelector("#weekDay");
 weekDay.innerHTML = `${day}`;
 fullDate.innerHTML = `${date}/${month}, ${hours}:${minutes}`;
 
+// present the searched city
+
 function searchCity(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city");
@@ -46,22 +50,3 @@ function searchCity(event) {
 
 let showCity = document.querySelector("#search-button");
 showCity.addEventListener("click", searchCity);
-
-function showFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitElement = document.querySelector("#fahrenheit-link");
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = "66";
-}
-
-function showCelsius(event) {
-  event.preventDefault();
-  let celsiusElement = document.querySelector("#celsius-link");
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = "19";
-}
-
-let fahrenheit = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", showFahrenheit);
-let celsius = document.querySelector("#celsius-link");
-celsius.addEventListener("click", showCelsius);
