@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-  font-family: "Lora", serif;
+  font-family: "Oswald", sans-serif;
   color: #4d4d4d;
   display: block;
   font-size: 40px;
@@ -71,6 +71,7 @@ a:hover {
 .city {
   display: block;
   font-weight: bolder;
+  text-transform: capitalize;
   margin: 25px 0px 10px 20px;
 }
 
@@ -106,10 +107,12 @@ a:hover {
   text-transform: capitalize;
 }
 .details {
+  font-size: 15px;
+  color: #4d4d4d;
   text-align: left;
-  margin-top: 18px;
 }
 
 .input-group-append {
   background-color: #ffe07d;
+  border-radius: 4px;
 }
