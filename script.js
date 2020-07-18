@@ -45,12 +45,23 @@ let WeekDay = document.querySelector("#weekDay");
 weekDay.innerHTML = `${day}`;
 fullDate.innerHTML = `${date}/${month}, ${hours}:${minutes}`;
 
+//show Forecast
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+
+  console.log(response.data);
+}
+
 // present the searched city
 
 function search(city) {
   let apiKey = "c719d1f8f1ff494c66ad9db9e28a5999";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric,`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function searchCity(event) {
