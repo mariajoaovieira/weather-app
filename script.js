@@ -34,7 +34,7 @@ let month = months[now.getMonth()];
 let date = now.getDate();
 let hours = now.getHours();
 if (hours < 10) {
-  hours = `0${minutes}`;
+  hours = `0${hours}`;
 }
 let minutes = now.getMinutes();
 if (minutes < 10) {
@@ -64,6 +64,8 @@ function searchCity(event) {
 let showCity = document.querySelector("#search-button");
 showCity.addEventListener("click", searchCity);
 
+// current location
+
 // current data
 
 function displayTemperature(response) {
@@ -74,11 +76,45 @@ function displayTemperature(response) {
   let minTempElement = document.querySelector("#min-temp");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  let iconElement = document.querySelector("#icon-present-day");
+  celsiusTemp = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = celsiusTemp;
   cityElement.innerHTML = response.data.name;
   weatherElement.innerHTML = response.data.weather[0].description;
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = response.data.wind.speed;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  celsiusTemp = Math.round(response.data.main.temp);
 }
+
+// conversion to fahrenheit
+
+let celsiusTemp = null;
+
+function showFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahTemperature = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+
+// conversion to celsius
+
+function showCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = celsiusTemp;
+}
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsius);
+
+search("Lisbon");

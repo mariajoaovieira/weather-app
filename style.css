@@ -17,7 +17,6 @@ h3 {
   color: #4d4d4d;
   display: block;
   margin: 0;
-  font-family: "Roboto", serif;
   font-weight: 600px;
   font-size: 20px;
   text-align: center;
@@ -26,19 +25,19 @@ h3 {
 h4 {
   color: #4d4d4d;
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   height: 30px;
-  line-height: 40px;
+  line-height: 30px;
   text-align: center;
 }
 
 p {
   color: #4d4d4d;
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 150;
-  line-height: 20px;
+  line-height: 15px;
   text-align: center;
 }
 
@@ -64,7 +63,7 @@ a:hover {
   border-radius: 7px;
   padding: 10px;
   margin: 10px;
-  max-width: 800px;
+  max-width: 700px;
   background-image: linear-gradient(to top, #879487 0%, #c1dfc4 100%);
 }
 
@@ -72,28 +71,26 @@ a:hover {
   display: block;
   font-weight: bolder;
   text-transform: capitalize;
-  margin: 25px 0px 10px 20px;
+  margin: 25px 0px 5px 20px;
 }
 
 .day-details {
   text-align: left;
   margin-left: 20px;
-  margin-bottom: 5px;
 }
 .time-details {
   text-align: left;
   margin-left: 20px;
-  margin-bottom: 15px;
 }
 
 .main-image {
-  block-size: 90px;
+  block-size: 100px;
   margin-bottom: 50px;
 }
 
 .temperature {
   font-weight: 800;
-  font-size: 45px;
+  font-size: 40px;
 }
 
 .temp-units {
@@ -107,7 +104,7 @@ a:hover {
   text-transform: capitalize;
 }
 .details {
-  font-size: 15px;
+  font-size: 18px;
   color: #4d4d4d;
   text-align: left;
 }
