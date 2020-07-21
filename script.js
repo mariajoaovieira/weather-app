@@ -208,6 +208,7 @@ function displayTemperature(response) {
   );
   celsiusTemp = Math.round(response.data.main.temp);
 }
+
 // conversion to fahrenheit
 
 let celsiusTemp = null;

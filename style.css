@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: #4d4d4d;
   display: block;
   font-size: 40px;
@@ -42,7 +42,6 @@ p {
 
 img {
   display: block;
-  margin: 20px auto;
   block-size: 60px;
 }
 
@@ -84,7 +83,8 @@ a:hover {
 
 .main-image {
   block-size: 100px;
-  margin-bottom: 40px;
+  display: block;
+  margin: 0 auto;
 }
 
 .temperature {
@@ -96,9 +96,7 @@ a:hover {
   position: relative;
   top: -15px;
 }
-
 .weather-type {
-  margin-top: 5px;
   margin-left: 25px;
   text-transform: capitalize;
 }
@@ -114,4 +112,11 @@ a:hover {
 
 .forecast-image {
   block-size: 100px;
+  margin: 0px auto;
+}
+
+.col-sm-4-details {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15px;
 }
