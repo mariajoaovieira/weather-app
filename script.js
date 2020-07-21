@@ -153,6 +153,36 @@ showCity.addEventListener("click", searchCity);
 
 // current location
 
+function getCurrentLocation() {
+  let currentLatitude;
+  let currentLongitude;
+  navigator.geolocation.getCurrentPosition((position) => {
+    currentLatitude = position.coords.latitude;
+    currentLongitude = position.coords.longitude;
+  });
+  return new Promise((resolve) => {
+    setInterval(() => {
+      if (currentLongitude && currentLatitude) {
+        resolve({ longitude: currentLongitude, latitude: currentLatitude });
+      }
+    }, 500);
+  });
+}
+
+async function searchCurrentLocation() {
+  const { longitude, latitude } = await getCurrentLocation();
+
+  let apiKey = "c719d1f8f1ff494c66ad9db9e28a5999";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+let currentButton = document.querySelector("#current-position");
+currentButton.addEventListener("click", () => searchCurrentLocation());
+
 // current data
 
 function displayTemperature(response) {
@@ -178,7 +208,6 @@ function displayTemperature(response) {
   );
   celsiusTemp = Math.round(response.data.main.temp);
 }
-
 // conversion to fahrenheit
 
 let celsiusTemp = null;

@@ -60,14 +60,17 @@
       <h3 class="time-details" id="fullDate"></h3>
 
       <div class="row">
-        <div class="col">
+        <div class="col-sm-4">
           <img class="main-image" src="" id="icon-present-day" />
         </div>
 
-        <div class="col">
+        <div class="col-sm-4">
           <br />
           <h3>
-            <span class="temperature" id="temperature"></span>
+            <span
+              class="temperature temperature-element"
+              id="temperature"
+            ></span>
             <span class="temp-units"
               ><a href="#" id="celsius-link">ºC</a> |
               <a href="#" id="fahrenheit-link">ºF</a>
@@ -76,12 +79,12 @@
           <h3 class="weather-type" id="condition"></h3>
         </div>
 
-        <div class="col">
+        <div class="col-sm-4">
           <br />
           <span class="details"><strong>Max. temp.: </strong></span>
-          <span class="details" id="max-temp"></span><br />
+          <span class="details temperature-element" id="max-temp"></span><br />
           <span class="details"><strong>Min. temp.: </strong></span>
-          <span class="details" id="min-temp"></span><br />
+          <span class="details temperature-element" id="min-temp"></span><br />
           <span class="details"><strong>Humidity: </strong></span>
           <span class="details" id="humidity"></span
           ><span class="details"> %</span><br />
