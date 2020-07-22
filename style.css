@@ -96,6 +96,16 @@ a:hover {
   position: relative;
   top: -15px;
 }
+
+.forecast-temp-units {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: -15px;
+  text-align: center;
+  font-size: small;
+}
+
 .weather-type {
   margin-left: 25px;
   text-transform: capitalize;

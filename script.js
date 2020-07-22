@@ -56,77 +56,21 @@ fullDate.innerHTML = `${date}/${month}, ${hours}:${minutes}`;
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  let forecast = response.data.list[0];
-
-  forecastElement.innerHTML = `
-  <div class="col-sm-2" class="col-xs-4">
+  forecastElement.innerHTML = "";
+  for (let i = 0; i < 6; i++) {
+    let forecast = response.data.list[i];
+    forecastElement.innerHTML += `
+  <div class="col-sm-2 col-xs-4">
   <h4>${formatHours(forecast.dt * 1000)}</h4>
   <img class ="forecast-image" src="http://openweathermap.org/img/wn/${
     forecast.weather[0].icon
   }@2x.png"/>
-  <p><strong>${Math.round(forecast.main.temp_max)}º</strong> / ${Math.round(
-    forecast.main.temp_min
-  )}º</p>`;
-
-  forecast = response.data.list[1];
-
-  forecastElement.innerHTML += `
-  <div class="col-sm-2" class="col-xs-4">
-  <h4>${formatHours(forecast.dt * 1000)}</h4>
-  <img class ="forecast-image" src="http://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
-  }@2x.png"/>
-  <p><strong>${Math.round(forecast.main.temp_max)}º</strong> / ${Math.round(
-    forecast.main.temp_min
-  )}º</p>`;
-
-  forecast = response.data.list[2];
-
-  forecastElement.innerHTML += `
-  <div class="col-sm-2" class="col-xs-4">
-  <h4>${formatHours(forecast.dt * 1000)}</h4>
-  <img class ="forecast-image" src="http://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
-  }@2x.png"/>
-  <p><strong>${Math.round(forecast.main.temp_max)}º</strong> / ${Math.round(
-    forecast.main.temp_min
-  )}º</p>`;
-
-  forecast = response.data.list[3];
-
-  forecastElement.innerHTML += `
-  <div class="col-sm-2" class="col-xs-4">
-  <h4>${formatHours(forecast.dt * 1000)}</h4>
-  <img class ="forecast-image" src="http://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
-  }@2x.png"/>
-  <p><strong>${Math.round(forecast.main.temp_max)}º</strong> / ${Math.round(
-    forecast.main.temp_min
-  )}º</p>`;
-
-  forecast = response.data.list[4];
-
-  forecastElement.innerHTML += `
-  <div class="col-sm-2" class="col-xs-4">
-  <h4>${formatHours(forecast.dt * 1000)}</h4>
-  <img class ="forecast-image" src="http://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
-  }@2x.png"/>
-  <p><strong>${Math.round(forecast.main.temp_max)}º</strong> / ${Math.round(
-    forecast.main.temp_min
-  )}º</p>`;
-
-  forecast = response.data.list[5];
-
-  forecastElement.innerHTML += `
-  <div class="col-sm-2" class="col-xs-4">
-  <h4>${formatHours(forecast.dt * 1000)}</h4>
-  <img class ="forecast-image" src="http://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
-  }@2x.png"/>
-  <p><strong>${Math.round(forecast.main.temp_max)}º</strong> / ${Math.round(
-    forecast.main.temp_min
-  )}º</p>`;
+  <p><span class="forecast-temp">${Math.round(
+    forecast.main.temp_max
+  )}</span>º / <span class="forecast-temp">${Math.round(
+      forecast.main.temp_min
+    )}</span>º</p>`;
+  }
 }
 
 // present the searched city
@@ -135,7 +79,6 @@ function search(city) {
   let apiKey = "c719d1f8f1ff494c66ad9db9e28a5999";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
-
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
@@ -218,6 +161,15 @@ function showFahrenheit(event) {
   let temperatureElement = document.querySelector("#temperature");
   let fahTemperature = (celsiusTemp * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahTemperature);
+  let forecastTimeElement = document.querySelectorAll(
+    "#forecast .forecast-temp"
+  );
+  forecastTimeElement.forEach((element) => {
+    if (element.getAttribute("celsius-temp")) return;
+    element.setAttribute("celsius-temp", element.innerHTML);
+    let forecastTimeTemp = (+element.innerHTML * 9) / 5 + 32;
+    element.innerHTML = Math.round(forecastTimeTemp);
+  });
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
@@ -229,6 +181,15 @@ function showCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = celsiusTemp;
+  let forecastTimeElement = document.querySelectorAll(
+    "#forecast .forecast-temp"
+  );
+  forecastTimeElement.forEach((element) => {
+    if (!element.getAttribute("celsius-temp")) return;
+    let forecastTimeTemp = element.getAttribute("celsius-temp");
+    element.innerHTML = Math.round(forecastTimeTemp);
+    element.removeAttribute("celsius-temp");
+  });
 }
 
 let celsiusLink = document.querySelector("#celsius-link");
